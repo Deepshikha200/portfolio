@@ -1,11 +1,20 @@
+import { useEffect } from 'react'
 import { HiOutlineMenuAlt3, HiX } from 'react-icons/hi'
-import { AnimatePresence } from 'framer-motion'
 import ThemeToggle from '../common/ThemeToggle'
-import MobileMenu from './MobileMenu'
-import { useActiveSection } from '../../hooks/useActiveSection'
 
-const Navbar = ({ links, theme, resumePath, onToggleTheme, isMenuOpen, setIsMenuOpen }) => {
-  const activeSection = useActiveSection(links.map((link) => link.id))
+const Navbar = ({ links, activeSection, theme, onToggleTheme, isMenuOpen, setIsMenuOpen }) => {
+  useEffect(() => {
+    if (!isMenuOpen) {
+      document.body.classList.remove('menu-open')
+      return
+    }
+
+    document.body.classList.add('menu-open')
+
+    return () => {
+      document.body.classList.remove('menu-open')
+    }
+  }, [isMenuOpen])
 
   return (
     <header className="navbar">
@@ -28,9 +37,6 @@ const Navbar = ({ links, theme, resumePath, onToggleTheme, isMenuOpen, setIsMenu
 
         <div className="navbar__actions">
           <ThemeToggle theme={theme} onToggle={onToggleTheme} />
-          <a className="button button--secondary" href={resumePath} download>
-            Download Resume
-          </a>
           <button
             type="button"
             className="navbar__menu-button"
@@ -43,14 +49,6 @@ const Navbar = ({ links, theme, resumePath, onToggleTheme, isMenuOpen, setIsMenu
         </div>
       </div>
 
-      <AnimatePresence>
-        <MobileMenu
-          isOpen={isMenuOpen}
-          links={links}
-          activeSection={activeSection}
-          onClose={() => setIsMenuOpen(false)}
-        />
-      </AnimatePresence>
     </header>
   )
 }

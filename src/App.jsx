@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { AnimatePresence } from 'framer-motion'
 import Hero from './components/sections/Hero'
 import About from './components/sections/About'
 import Skills from './components/sections/Skills'
@@ -10,9 +11,11 @@ import PortfolioLinks from './components/sections/PortfolioLinks'
 import Education from './components/sections/Education'
 import Contact from './components/sections/Contact'
 import Navbar from './components/layout/Navbar'
+import MobileMenu from './components/layout/MobileMenu'
 import Footer from './components/layout/Footer'
 import ScrollToTopButton from './components/layout/ScrollToTopButton'
 import { portfolioData } from './data/portfolioData'
+import { useActiveSection } from './hooks/useActiveSection'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -34,6 +37,7 @@ const App = () => {
     return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
   })
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const activeSection = useActiveSection(sectionOrder)
 
   const navLinks = useMemo(
     () =>
@@ -60,6 +64,7 @@ const App = () => {
         opacity: 0,
         duration: 0.65,
         ease: 'power2.out',
+        clearProps: 'transform',
       })
 
       gsap.from('.hero-animate', {
@@ -98,12 +103,20 @@ const App = () => {
     <div className="app-shell">
       <Navbar
         links={navLinks}
+        activeSection={activeSection}
         theme={theme}
-        resumePath={portfolioData.hero.resumePath}
         onToggleTheme={() => setTheme((previousTheme) => (previousTheme === 'dark' ? 'light' : 'dark'))}
         isMenuOpen={isMenuOpen}
         setIsMenuOpen={setIsMenuOpen}
       />
+      <AnimatePresence>
+        <MobileMenu
+          isOpen={isMenuOpen}
+          links={navLinks}
+          activeSection={activeSection}
+          onClose={() => setIsMenuOpen(false)}
+        />
+      </AnimatePresence>
 
       <main className="main-content">
         <Hero data={portfolioData.hero} />

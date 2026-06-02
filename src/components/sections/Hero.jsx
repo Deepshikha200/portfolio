@@ -40,9 +40,6 @@ const Hero = ({ data }) => {
           <a href="#projects" className="button">
             View Projects
           </a>
-          <a href={data.resumePath} className="button button--secondary" download>
-            Download Resume
-          </a>
         </div>
         <div className="hero-animate">
           <SocialLinks email={data.email} linkedIn={data.linkedIn} />

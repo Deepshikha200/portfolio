@@ -14,11 +14,10 @@ export const portfolioData = {
     role: 'Frontend Developer',
     location: 'Chandigarh, India',
     email: '493deepshikha@gmail.com',
-    linkedIn: 'https://www.linkedin.com/in/deepshikha-prajapati-544a5a3a',
+    linkedIn: 'https://www.linkedin.com/in/deepshikha-prajapati-544a5a23a/',
     typewriterWords: ['React.js', 'Next.js', 'Performance', 'Pixel-Perfect UI'],
     summary:
       'I craft responsive, high-performance web experiences with modern React ecosystems and clean, maintainable code.',
-    resumePath: '/resume/deepshikha-resume.pdf',
   },
   about: {
     title: 'About Me',
@@ -145,7 +144,7 @@ export const portfolioData = {
     subtitle: 'Let us build exceptional digital products together.',
     location: 'Chandigarh, India',
     email: '493deepshikha@gmail.com',
-    linkedIn: 'https://www.linkedin.com/in/deepshikha-prajapati-544a5a3a',
+    linkedIn: 'https://www.linkedin.com/in/deepshikha-prajapati-544a5a23a/',
   },
   footer: {
     text: 'Designed and developed by Deepshikha.',
