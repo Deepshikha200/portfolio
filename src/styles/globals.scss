@@ -228,6 +228,8 @@ html[data-theme='light'] {
   cursor: pointer;
 }
 
+
+
 .mobile-menu {
   position: absolute;
   top: 0;
@@ -640,5 +642,11 @@ body.menu-open {
   *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .navbar__menu-button {
+    display: none;
   }
 }
