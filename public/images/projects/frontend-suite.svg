@@ -1,0 +1,15 @@
+<svg width="960" height="600" viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgSuite" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2ED3B7" />
+      <stop offset="100%" stop-color="#7C5CFF" />
+    </linearGradient>
+  </defs>
+  <rect width="960" height="600" rx="24" fill="url(#bgSuite)" />
+  <rect x="80" y="80" width="800" height="440" rx="26" fill="rgba(10,14,26,0.5)" />
+  <rect x="122" y="122" width="716" height="154" rx="20" fill="rgba(255,255,255,0.18)" />
+  <rect x="122" y="300" width="228" height="180" rx="16" fill="rgba(255,255,255,0.16)" />
+  <rect x="366" y="300" width="228" height="180" rx="16" fill="rgba(255,255,255,0.16)" />
+  <rect x="610" y="300" width="228" height="180" rx="16" fill="rgba(255,255,255,0.16)" />
+  <text x="122" y="112" font-family="Inter, sans-serif" font-size="16" fill="#F8FAFC">Frontend Project Collection</text>
+</svg>
