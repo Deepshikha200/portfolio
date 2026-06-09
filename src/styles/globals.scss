@@ -23,6 +23,17 @@ body {
   line-height: 1.6;
 }
 
+html[data-theme='dark'] body {
+  background-image:
+    url('../assets/hero-bg.jpg'),
+    radial-gradient(circle at 18% 8%, var(--bg-glow-primary), transparent 34%),
+    radial-gradient(circle at 82% 10%, var(--bg-glow-accent), transparent 30%);
+  background-color: var(--color-background);
+  background-size: cover, auto, auto;
+  background-position: center top, left top, right top;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -166,7 +177,6 @@ html[data-theme='light'] {
   z-index: 50;
   backdrop-filter: blur(12px);
   background: rgba(10, 16, 32, 0.65);
-  border-bottom: 1px solid var(--color-border);
 
   &__inner {
     min-height: $navbar-height;
@@ -178,7 +188,7 @@ html[data-theme='light'] {
 
   &__brand {
     font-family: $font-heading;
-    font-size: 1.3rem;
+    font-size: clamp(1.05rem, 2.8vw, 1.3rem);
     letter-spacing: 0.02em;
   }
 
@@ -190,7 +200,7 @@ html[data-theme='light'] {
     a {
       color: var(--color-text-muted);
       font-weight: 500;
-      font-size: 1.1rem;
+      font-size: clamp(0.9rem, 1.4vw, 1rem);
 
       &.is-active {
         color: var(--color-heading);
@@ -234,7 +244,7 @@ html[data-theme='light'] {
   position: absolute;
   top: 0;
   left: 0;
-  width: min(82vw, 21rem);
+  width: min(86vw, 21rem);
   height: 100%;
   z-index: 61;
   border-right: 1px solid var(--color-border);
@@ -295,7 +305,18 @@ body.menu-open {
   align-items: start;
   @include section-padding;
 
+
   &__inner {
+    display: grid;
+    gap: $space-4;
+    align-items: center;
+
+    @include desktop {
+      grid-template-columns: minmax(0, 1fr) minmax(18rem, 24rem);
+    }
+  }
+
+  &__content {
     display: grid;
     gap: $space-3;
   }
@@ -336,6 +357,10 @@ body.menu-open {
       align-items: center;
       gap: 0.35rem;
     }
+
+    a {
+      overflow-wrap: anywhere;
+    }
   }
 
   &__actions {
@@ -343,6 +368,116 @@ body.menu-open {
     flex-wrap: wrap;
     gap: $space-2;
     margin-top: $space-1;
+  }
+}
+
+.hero-pattern {
+  position: relative;
+  min-height: 24rem;
+  border-radius: $radius-lg;
+  border: 1px solid var(--color-border);
+  background: linear-gradient(160deg, rgba(124, 92, 255, 0.16), rgba(17, 24, 58, 0.72));
+  overflow: hidden;
+  box-shadow: $shadow-soft;
+
+  &__grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 2rem 2rem;
+    animation: patternShift 16s linear infinite;
+  }
+
+  &__glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(6px);
+
+    &--one {
+      width: 11rem;
+      height: 11rem;
+      top: 1.5rem;
+      left: -2.5rem;
+      background: rgba(124, 92, 255, 0.42);
+      animation: glowFloat 6.5s ease-in-out infinite;
+    }
+
+    &--two {
+      width: 9rem;
+      height: 9rem;
+      right: -1.5rem;
+      bottom: 1.75rem;
+      background: rgba(46, 211, 183, 0.35);
+      animation: glowFloat 7.2s ease-in-out infinite reverse;
+    }
+  }
+
+  &__ring {
+    position: absolute;
+    width: 13.5rem;
+    height: 13.5rem;
+    border-radius: 50%;
+    border: 1px dashed rgba(255, 255, 255, 0.24);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: rotateRing 16s linear infinite;
+  }
+
+  &__card {
+    position: absolute;
+    border: 1px solid var(--color-border);
+    background: rgba(6, 12, 30, 0.72);
+    color: var(--color-text);
+    padding: 0.62rem 0.8rem;
+    border-radius: $radius-md;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+
+    &--top {
+      top: 2.25rem;
+      right: 1.5rem;
+    }
+
+    &--bottom {
+      left: 1.3rem;
+      bottom: 2rem;
+    }
+  }
+}
+
+@keyframes patternShift {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(2rem);
+  }
+}
+
+@keyframes rotateRing {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes glowFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-0.8rem);
   }
 }
 
@@ -581,6 +716,20 @@ body.menu-open {
 }
 
 @include tablet {
+  html[data-theme='dark'] body {
+    background-attachment: scroll;
+  }
+
+  .hero-section {
+    &__inner {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .hero-pattern {
+    min-height: 20rem;
+  }
+
   .navbar {
     &__desktop-nav {
       display: none;
@@ -627,6 +776,48 @@ body.menu-open {
 
     a {
       flex: 1;
+      justify-content: center;
+    }
+  }
+
+  .mobile-menu {
+    width: min(88vw, 18rem);
+
+    &__title {
+      padding: 1.4rem 1rem 0.25rem;
+      font-size: 1.05rem;
+    }
+
+    ul {
+      padding: 0.25rem 1rem 1rem;
+    }
+  }
+}
+
+@media (max-width: 23.5rem) {
+  .navbar {
+    &__inner {
+      gap: 0.5rem;
+    }
+  }
+
+  .hero-section {
+    &__meta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.45rem;
+    }
+
+    &__actions {
+      .button {
+        width: 100%;
+      }
+    }
+  }
+
+  .social-links {
+    a {
+      width: 100%;
       justify-content: center;
     }
   }

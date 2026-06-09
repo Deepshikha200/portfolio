@@ -9,40 +9,41 @@ const Hero = ({ data }) => {
   return (
     <section id="home" className="hero-section">
       <div className="container hero-section__inner">
-        <motion.p
-          className="hero-section__kicker hero-animate"
-        >
-          Frontend Developer Portfolio
-        </motion.p>
-        <motion.h1
-          className="hero-animate"
-        >
-          {data.name}
-        </motion.h1>
-        <motion.p
-          className="hero-section__role hero-animate"
-        >
-          {data.role} - <span>{typewriterText}</span>
-        </motion.p>
-        <motion.p
-          className="hero-section__summary hero-animate"
-        >
-          {data.summary}
-        </motion.p>
-        <div className="hero-section__meta hero-animate">
-          <span>
-            <FaMapMarkerAlt />
-            {data.location}
-          </span>
-          <a href={`mailto:${data.email}`}>{data.email}</a>
-        </div>
-        <div className="hero-section__actions hero-animate">
-          <a href="#projects" className="button">
-            View Projects
-          </a>
-        </div>
-        <div className="hero-animate">
-          <SocialLinks email={data.email} linkedIn={data.linkedIn} />
+        <div className="hero-section__content">
+          <motion.p
+            className="hero-section__kicker hero-animate">
+            Frontend Developer Portfolio
+          </motion.p>
+          <motion.h1
+            className="hero-animate"
+          >
+            {data.name}
+          </motion.h1>
+          <motion.p
+            className="hero-section__role hero-animate"
+          >
+            {data.role} - <span>{typewriterText}</span>
+          </motion.p>
+          <motion.p
+            className="hero-section__summary hero-animate"
+          >
+            {data.summary}
+          </motion.p>
+          <div className="hero-section__meta hero-animate">
+            <span>
+              <FaMapMarkerAlt />
+              {data.location}
+            </span>
+            <a href={`mailto:${data.email}`}>{data.email}</a>
+          </div>
+          <div className="hero-section__actions hero-animate">
+            <a href="#projects" className="button">
+              View Projects
+            </a>
+          </div>
+          <div className="hero-animate">
+            <SocialLinks email={data.email} linkedIn={data.linkedIn} />
+          </div>
         </div>
       </div>
     </section>
