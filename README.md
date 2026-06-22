@@ -147,7 +147,7 @@ I'm open to exciting **Frontend Developer** opportunities — especially roles i
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_GITHUB_USERNAME/output/github-contribution-grid-snake-dark.svg" alt="Snake animation" />
+<img src="https://raw.githubusercontent.com/Deepshikha200/Deepshikha200/output/github-contribution-grid-snake-dark.svg" alt="Snake animation" />
 
 <br/>
 <sub>✨ Crafting clean UIs, one component at a time.</sub>
